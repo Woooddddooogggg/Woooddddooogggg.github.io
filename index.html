@@ -1,72 +1,72 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- boostrap css -->
+  <meta charset="UTF-8">
+  <title>Monk's Café</title>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8">
-      <h3 class="text-center">
-        Cafe De Day
-      </h3>
-      <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-sm-2 th">
-          <img style="width:64px" alt="Bootstrap Image Preview" src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/512/Twitter-icon.png" />
-        </div>
-        <div class="col-sm-2">
-          <img style="width:64px" alt="Bootstrap Image Preview" src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png" />
-        </div>
-        <div class="col-sm-2">
-          <img style="width:64px" alt="Bootstrap Image Preview" src="https://images.vexels.com/media/users/3/137198/isolated/preview/07f0d7b69ef071571e4ada2f4d6a053a-instagram-icon-background-by-vexels.png" />
-        </div>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="col-md-4">
-      <h3 class="text-right">
-        <div class="row text-center">
-    <form class="form-inline reservation-form">
-      <div class="form-group">
-        <input type="text" class="form-control reservation-name" placeholder="Jane Doe">
-      </div>
-      <div class="form-group">
-        <div>
-          <input type="date" class="dateclass"/>
-        </div>
-      </div>
-      <button class="btn btn-default reservation-button">Make a Reservation</button>
-    </form>
-    <h3>Existing Reservations</h3>
-    <table class='reservations table'>
-<thead>
-<th>Name</th>
-<th>Reservation Date</th>
-</thead>
-<tbody></tbody>
-</table>
-<div id="map"></div>
-  </div>
+<body data-spy="scroll" data-target=".navbar-inverse" data-offset="50" class="restaurant-pic">
 
-
+  <!-- template for reservation-list -->
   <script id="reservation-template" type="text/x-handlebars-template">
-    <tr data-id="{{reservationId}}" class="reservationEntry">
+    <tr>
       <td>{{name}}</td>
       <td>{{day}}</td>
     </tr>
   </script>
-      </h3>
+
+  <!-- navbar -->
+  <div id="navbar" class="navbar-collapse navbar-inverse collapse navbar-fixed-top">
+    <a href="#" class="navbar-brand">Monk's Café</a>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active "><a href="#reservation">Reservation</a></li>
+      <li><a href="#map">Map</a></li>
+    </ul>
+  </div>
+
+  <div class="container-fluid restaurant-pic">
+    <div class="row">
+      <div class="col-md-12"></div>
     </div>
   </div>
-  
-</div>
+
+  <div id="reservation" class="container-fluid reservation">
+
+    <!-- reservation form -->
+    <div class="row">
+      <div class="col-md-12 text-center reservation-form">
+        <form class="form-inline reservations">
+          <div class="form-group">
+            <input type="text" class="form-control reservation-name" placeholder="Your Name">
+          </div>
+          <div class="form-group">
+            <div class="dropdown">
+              <input id="datePicker" type="date" class=form-control></input>
+            </div>
+          </div>
+          <button class="btn btn-default reservation-button">Make Reservation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table class="table table-bordered col-md-12 container-fluid whiteText">
+      <h4 class="whiteText">Upcoming Reservations</h4>
+      <thead>
+        <th class="whiteText">Name</th>
+        <th class="whiteText">Date</th>
+      </thead>
+      <tbody class="reservation-list"></tbody>
+    </table>
+    </div>
+
+  <div id="map" class="container-fluid restaurant-locator">
+  </div>
+
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
   <!-- jQuery -->
@@ -75,11 +75,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- handlebars -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-
   <!-- custom js -->
   <script src="js/main.js"></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDbt1M_Y1NT5NIZ27O1y0L-PXT5-bEIjs&callback=initMap"></script>
 
+  <!-- google maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDbt1M_Y1NT5NIZ27O1y0L-PXT5-bEIjs&callback=initMap"
+  async defer></script>
 </body>
 </html>

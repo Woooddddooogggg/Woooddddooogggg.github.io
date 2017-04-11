@@ -10,7 +10,8 @@ var config = {
 var database = firebase.database();
 var reservationData = {};
 
-$('.dateclass').on('change', function() {
+$('#datePicker').on('change', function() {
+	console.log($(this).val() + ' text ' + $(this).text())
   reservationData.day = $(this).val();
 });
 
@@ -24,7 +25,7 @@ $('.reservation-form').on('submit', function(event) {
 function getReservations() {
   database.ref('reservations').on('value', function(results) {
       var allReservations = results.val();
-      $('.reservations tbody').empty();
+      $('.reservation tbody').empty();
 	
     for (reservation in allReservations) {
       var context = {
@@ -35,7 +36,7 @@ function getReservations() {
       var source = $("#reservation-template").html();
       var template = Handlebars.compile(source);
       var reservationListItem = template(context);
-      $('.reservations tbody').append(reservationListItem);
+      $('tbody').append(reservationListItem);
     }
   });
 }
